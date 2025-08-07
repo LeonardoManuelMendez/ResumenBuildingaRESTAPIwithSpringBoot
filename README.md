@@ -4,14 +4,9 @@ Los cursos de **Spring Academy** son excelentes. Tienen herramientas interactiva
 
 📚 Sin embargo, eché en falta algo: un material de consulta compacta. Muchos dirán “¡toma notas!”. Y tienen razón. Por eso, me puse manos a la obra e hice un **resumen de todo el contenido del curso "Building a REST API with Spring Boot"**.
 
-🧠 **En este PDF encontrarás:**
-- Todo el contenido del curso organizado y resumido.
+🧠 **En este repositorio encontrarás:**
+- Un pdf con todo el contenido del curso organizado y resumido.
 - El proyecto completo con código limpio y funcional.
-- Una sección final con todos los pasos esenciales para reconstruir la API desde cero.
-
-🔗 Si crees que puede serte útil para estudiar o consultar más adelante, puedes descargarlo aquí:  
-📥 [Enlace al PDF con el resumen y el proyecto]
+- Una sección final con todos los pasos esenciales para reconstruir la API desde cero a modo de resumen practico.
 
 Espero que le sirva a más de uno. ¡Nos seguimos leyendo!
-
-#SpringBoot #Java #BackendDevelopment #SpringAcademy #Aprendizaje #DesarrolloWeb #RestAPI
