@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Documentación API CashCard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2rem;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    h1, h2 {
+      color: #2c3e50;
+    }
+    code {
+      background-color: #eee;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+    pre {
+      background-color: #eee;
+      padding: 1em;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    section {
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>API REST - CashCard</h1>
+  <p>Bienvenido a la API CashCard. Esta API permite a los padres gestionar tarjetas de efectivo virtuales para sus hijos. Está desarrollada con Spring Boot y sigue el enfoque de desarrollo guiado por pruebas (TDD).</p>
+
+  <section>
+    <h2>📘 Endpoints disponibles</h2>
+
+    <h3>🔍 Obtener una tarjeta</h3>
+    <p><strong>GET</strong> <code>/cashcards/{id}</code></p>
+    <p>Obtiene la información de una tarjeta de efectivo según su ID.</p>
+    <p><strong>Respuesta exitosa (200 OK):</strong></p>
+    <pre>{
+  "id": 99,
+  "amount": 123.45
+}</pre>
+    <p><strong>Errores:</strong></p>
+    <ul>
+      <li><code>401 Unauthorized</code>: Si el usuario no está autenticado</li>
+      <li><code>404 Not Found</code>: Si la tarjeta no existe</li>
+    </ul>
+
+    <h3>📄 Listar tarjetas</h3>
+    <p><strong>GET</strong> <code>/cashcards</code></p>
+    <p>Devuelve una lista paginada de tarjetas.</p>
+    <p>Parámetros opcionales: <code>?page=0&size=5&sort=amount,desc</code></p>
+
+    <h3>➕ Crear una tarjeta</h3>
+    <p><strong>POST</strong> <code>/cashcards</code></p>
+    <p>Crear una nueva tarjeta con el siguiente JSON:</p>
+    <pre>{
+  "amount": 100.00
+}</pre>
+    <p><strong>Respuesta:</strong> <code>201 Created</code></p>
+
+    <h3>✏️ Actualizar tarjeta</h3>
+    <p><strong>PUT</strong> <code>/cashcards/{id}</code></p>
+    <p>Actualiza el monto de una tarjeta existente.</p>
+
+    <h3>🗑️ Eliminar tarjeta</h3>
+    <p><strong>DELETE</strong> <code>/cashcards/{id}</code></p>
+    <p>Elimina una tarjeta por su ID.</p>
+    <p><strong>Respuesta:</strong> <code>204 No Content</code></p>
+  </section>
+
+  <section>
+    <h2>🔐 Autenticación</h2>
+    <p>La API está protegida mediante autenticación básica HTTP. Necesitas un usuario y contraseña válidos para acceder a los endpoints.</p>
+    <p>Ejemplo de cabecera:</p>
+    <pre>Authorization: Basic &lt;base64(user:password)&gt;</pre>
+  </section>
+
+  <section>
+    <h2>🛠️ Tecnologías utilizadas</h2>
+    <ul>
+      <li>Spring Boot</li>
+      <li>Spring Web</li>
+      <li>Spring Data</li>
+      <li>Spring Security</li>
+      <li>Jackson (JSON)</li>
+      <li>Gradle</li>
+      <li>JUnit 5 y AssertJ (para pruebas)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📚 Enlaces útiles</h2>
+    <ul>
+      <li><a href="https://spring.io/projects/spring-boot" target="_blank">Documentación oficial de Spring Boot</a></li>
+      <li><a href="https://docs.spring.io/spring-security/" target="_blank">Spring Security</a></li>
+    </ul>
+  </section>
+
+    <section>
+    <h2>🧪 Cómo probar la API con Postman</h2>
+    <p>Sigue estos pasos para probar cada uno de los endpoints de la API CashCard usando <strong>Postman</strong>:</p>
+
+    <h3>1️⃣ Autenticación</h3>
+    <p>Todos los endpoints requieren autenticación básica:</p>
+    <ul>
+      <li>En Postman, ve a la pestaña <strong>Authorization</strong></li>
+      <li>Tipo: <strong>Basic Auth</strong></li>
+      <li>Usuario: <code>leonardo</code> (o el que hayas configurado)</li>
+      <li>Contraseña: <code>1234</code> (o la que hayas configurado)</li>
+    </ul>
+
+    <h3>2️⃣ Obtener una tarjeta</h3>
+    <p><strong>Método:</strong> GET<br>
+       <strong>URL:</strong> <code>http://localhost:8080/cashcards/99</code></p>
+
+    <h3>3️⃣ Listar todas las tarjetas</h3>
+    <p><strong>Método:</strong> GET<br>
+       <strong>URL:</strong> <code>http://localhost:8080/cashcards</code><br>
+       <strong>Parámetros opcionales:</strong> <code>?page=0&size=5&sort=amount,desc</code></p>
+
+    <h3>4️⃣ Crear una tarjeta</h3>
+    <p><strong>Método:</strong> POST<br>
+       <strong>URL:</strong> <code>http://localhost:8080/cashcards</code></p>
+    <p><strong>Body (raw - JSON):</strong></p>
+    <pre>{
+  "amount": 100.00
+}</pre>
+
+    <h3>5️⃣ Actualizar una tarjeta</h3>
+    <p><strong>Método:</strong> PUT<br>
+       <strong>URL:</strong> <code>http://localhost:8080/cashcards/99</code></p>
+    <p><strong>Body (raw - JSON):</strong></p>
+    <pre>{
+  "amount": 150.00
+}</pre>
+
+    <h3>6️⃣ Eliminar una tarjeta</h3>
+    <p><strong>Método:</strong> DELETE<br>
+       <strong>URL:</strong> <code>http://localhost:8080/cashcards/99</code></p>
+
+    <h3>🛑 Errores comunes</h3>
+    <ul>
+      <li><code>401 Unauthorized</code>: Credenciales incorrectas o no enviadas</li>
+      <li><code>403 Forbidden</code>: Intento de acceder a una tarjeta que no te pertenece</li>
+      <li><code>404 Not Found</code>: El ID de la tarjeta no existe</li>
+    </ul>
+  </section>
+
+
+  <footer>
+    <hr>
+    <p><small>Curso Spring Boot - Family Cash Card - Agosto 2025</small></p>
+  </footer>
+
+</body>
+</html>
